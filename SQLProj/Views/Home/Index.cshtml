@@ -1,0 +1,35 @@
+﻿@using SQLProj.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model List<Employee>
+
+<h3>All Employees</h3>
+
+<a asp-controller="Home" asp-action="Create">Add</a>
+<a asp-action="Search">Look for a Employee</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID:</th>
+            <th>Name:</th>
+            <th>Last Name:</th>
+            <th>Email:</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (Employee item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>@item.Name</td>
+                <td>@item.LastName</td>
+                <td>@item.Email</td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>

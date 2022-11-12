@@ -1,0 +1,63 @@
+﻿@using SQLProj.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model List<Employee>
+@*I didn't feel it was necessairy to create a ViewModel since this is a smaller project*@
+
+
+<div>
+    <div style="color:red;">
+        @ViewData["ERROR"]
+    </div>
+
+    <form asp-action="Search">
+        <div>
+            <label>Id</label>
+            <input type="number" min="0" value="0" name="Id" />
+
+            <label>First Name</label>
+            <input name="Name" />
+
+            <label>Last Name</label>
+            <input name="LastName" />
+
+            <label>Email</label>
+            <input name="Email" />
+
+            <input style="margin-left: 15px;" type="submit" value="Submit" />
+        </div>
+    </form>
+</div>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID:</th>
+                <th>Name:</th>
+                <th>Last Name:</th>
+                <th>Email:</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (Employee item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Id
+                        </td>
+                        <td>@item.Name</td>
+                        <td>@item.LastName</td>
+                        <td>@item.Email</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <a asp-action="Index">Back</a>
+</div>
